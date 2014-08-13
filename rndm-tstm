@@ -1,24 +1,24 @@
 <MvASSIGN NAME = "l.active" VALUE = "y">
-<MvASSIGN NAME = "l.home" 	VALUE = "n">
+<MvASSIGN NAME = "l.home"   VALUE = "n">
 
-<MvOPEN NAME 		= "CMS" 
+<MvOPEN NAME 			= "CMS" 
 		DATABASE 	= "database@localhost" 
 		TYPE 		= "mysql"
-        USERNAME 	= "{ 'username' }" 
+        	USERNAME 	= "{ 'username' }" 
 		PASSWORD 	= "{ 'password' }">
 
-<MvOPENVIEW NAME 	= "CMS" 
-			VIEW 	= "Testimonials" 
-			QUERY 	= "{ 'SELECT
-							* 
-						  FROM
-						  	fb_mod_testimonials
-						  WHERE
-						  	mod_tstm_active	= ? AND 
-						  	mod_tstm_home	= ? AND 
-							mod_tstm_id >= FLOOR( 1 + RAND() * ( SELECT MAX(mod_tstm_id) FROM fb_mod_testimonials ) )
-						  LIMIT 1' }"
-			FIELDS 	= "l.active, l.home">
+<MvOPENVIEW NAME	= "CMS" 
+		VIEW 	= "Testimonials" 
+		QUERY 	= "{ '	SELECT
+					* 
+				FROM
+				  	fb_mod_testimonials
+				WHERE
+				  	mod_tstm_active	= ? AND 
+				  	mod_tstm_home	= ? AND 
+					mod_tstm_id >= FLOOR( 1 + RAND() * ( SELECT MAX(mod_tstm_id) FROM fb_mod_testimonials ) )
+				LIMIT 1' }"
+		FIELDS 	= "l.active, l.home">
 
 <MvIF EXPR = "{ g.debug }">
 	<MvEVAL EXPR = "{ '
